@@ -10,35 +10,40 @@
      <small>{{post.created_date}} - {{post.category.name}}, by : {{post.user.username}}</small>
      <br>
      <img src="{{ post.image.url }}" alt="alt-image" style="margin:1rem 0; width:100%">
-     <p>
-        {{post.content}}
-     </p>
+
+     <section>
+         <p>
+            {{post.content|safe}}
+         </p>
+     </section>
      <br/>
-     <h2 style="text-decoration:underline">Comment</h2>
+     <section>
+         <h2 style="text-decoration:underline">Comment</h2>
 
-        {% if comments.count == 0 %}
-            <em>No Comment Yet</em>
-        {% endif %}
+            {% if comments.count == 0 %}
+                <em>No Comment Yet</em>
+            {% endif %}
 
-            {% for comment in comments %}
-                <label><strong>{{comment.name}}</strong> - <em>{{comment.email}}</em></label>
-                <p>
-                    {{comment.body}}
-                </p>
-            {% endfor %}
-    <p>----------------------------------------------------------------------------</p>
-        {% if messages %}
-            <ul class="list">
-                {% for message in messages %}
-                <li{% if message.tags %} class="text-blue"{% endif %}>{{ message }}</li>
+                {% for comment in comments %}
+                    <label><strong>{{comment.name}}</strong> - <em>{{comment.email}}</em></label>
+                    <p>
+                        {{comment.body}}
+                    </p>
                 {% endfor %}
-            </ul>
-        {% endif %}
-     <form method="POST" action="{% url 'blog:addcomment' %}" id="comment">
-         {% csrf_token %}
-         <input type="hidden" name="post_id" value="{{post.id}}">
-         <input type="hidden" name="post_slug" value="{{post.slug }}">
-         {{comment_form.as_p}}
-         <button>Add Comment</button>
-     </form>
+        <p>----------------------------------------------------------------------------</p>
+            {% if messages %}
+                <ul class="list">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="text-blue"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+         <form method="POST" action="{% url 'blog:addcomment' %}" id="comment">
+             {% csrf_token %}
+             <input type="hidden" name="post_id" value="{{post.id}}">
+             <input type="hidden" name="post_slug" value="{{post.slug }}">
+             {{comment_form.as_p}}
+             <button>Add Comment</button>
+         </form>
+     </section>
 {% endblock content %}
