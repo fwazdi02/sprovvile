@@ -1,0 +1,11 @@
+[
+{
+    "model":"myprofile.Myprofile",
+    "pk": "1",
+    "fields":{
+            "user":"1",
+            "avatar":"path_to_file",
+            "about_me":"lorem ipsum dolor"
+            }
+}
+]

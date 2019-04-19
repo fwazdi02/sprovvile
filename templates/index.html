@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <section>
+        <img src="{{ request.site.myprofile.avatar.url }}" class="avatar">
+        <h3>About Me</h3 
+        <div>
+            <p>{{ request.site.myprofile.about_me }}</p>
+        </div>
+    </section>    
+
+    <section>
+        <h3>My Skills</h3> 
+        <div>
+            {% for skill in myskill %}
+            <p>{{ skill.title }} : {{ skill.presentase }} / {{ skill.max_presentase }}</p>
+            <small>{{ skill.description }}</small>
+            {% endfor %}
+        </div>
+    </section>    
+
+    <section>
+        <h3>My Portfolio</h3> 
+        <div id="portfolio">
+            {% for portfolio in myportfolio %}
+            <figure>
+                <img src="{{ portfolio.image.url }}">    
+                <figcaption>
+                    <p>{{ portfolio.title }}</p>
+                    <small><a href="{{ portfolio.ext_link }}">link</a> ~ {{ portfolio.start_date }} ::: {{ portfolio.end_date }}</small>
+                    <p>
+                        <small>{{ portfolio.description }}</small>
+                    </p>
+                </figcaption>
+            </figure>
+            {% endfor %}
+        </div>
+    </section>
+
+
+    <section id="contact">
+        <h3>Contact</h3>
+        <div>
+            {% if messages %}
+            <ul class="list">
+                {% for message in messages %}
+                <li{% if message.tags %} class="text-blue"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form method="POST" action="{% url 'contact:add' %}">
+                {% csrf_token %}
+                {{ contact_form.as_p }}
+                <button>Send</button>
+            </form>
+        </div>
+    </section>
+
+{% endblock content %}

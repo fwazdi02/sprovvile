@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="{{ request.site.icon.url }}">
+    <title>{{ page_title }} - {{ request.site.site }}</title>
+    <style type="text/css">
+        body {
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .post{
+            text-align: left;
+        }
+        
+        img.avatar{
+            border-radius: 20rem;
+        }
+
+        section{
+            margin-bottom: 1rem;
+        }
+
+        #portfolio figure{
+            width: 45%;
+            display: inline-block;
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+
+        figure > img {
+            width: 50%;
+            height: auto;
+        }
+
+        main.main-wrapper{
+            width: 50%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        ul.list{
+            margin: 0 0 1.5rem 0;
+            padding: 0;
+        }
+        ul.list li{
+            display: inline-block;
+            list-style: none;
+        }
+
+        ul.list li a{
+            margin: .2rem .5rem;
+        }
+
+        .text-blue{
+            color: blue;
+        }
+
+        @media screen and (max-width:764px){
+        #portfolio figure{
+            width: 100%;
+            display: inline-block;
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+
+        }
+
+    </style>
+</head>
+<body>
+<nav>
+    <ul class="list">
+        {# <li><strong><em>{-{{ request.site.site}}-}</em></strong></li> #}
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'blog:list' %}">Blog</a></li>
+        <li><a href="{% url 'blog:list' %}">My CV</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+    </ul>
+</nav>
+<main class="main-wrapper">
+
+    {% block content %}
+
+    {% endblock content %}
+     <br/>
+    <p>----------------------------------------------------------------------------</p>
+    <footer class="footer">
+        <h3>{{ request.site.site }}</h3>
+        <p>{{request.site.myprofile.address}} - {{request.site.myprofile.city}}</p>
+        <p>{{request.site.myprofile.phone_number}}</p>
+        <p>{{request.site.myprofile.user.email}}</p>
+
+        <ul class="list">
+            <li><a href="{{request.site.myprofile.facebook}}">fb</a></li>
+            <li><a href="{{request.site.myprofile.twitter}}">tw</a></li>
+            <li><a href="{{request.site.myprofile.instagram}}">ig</a></li>
+            <li><a href="{{request.site.myprofile.pinterest}}">pin</a></li>
+            <li><a href="{{request.site.myprofile.github}}">gth</a></li>
+            <li><a href="{{request.site.myprofile.gitlab}}">gtl</a></li>
+        </ul>
+    </footer>
+
+</main>
+</body>
+</html>

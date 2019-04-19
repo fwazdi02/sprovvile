@@ -1,0 +1,10 @@
+[
+{
+    "model":"config.Config",
+    "pk": "1",
+    "fields":{
+            "site":"Hello",
+            "myprofile":"1"
+            }
+}
+]
