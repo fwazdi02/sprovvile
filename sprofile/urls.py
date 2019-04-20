@@ -24,6 +24,7 @@ from .views import index
 urlpatterns = [
     path('', index, name='index'),
     path('about', TemplateView.as_view(template_name='about.html', extra_context={'page_title':'About'}), name='about'),
+    path('send-cv', TemplateView.as_view(template_name='send-cv.html', extra_context={'page_title':'CV'}), name='send-cv'),
     path('blog/', include(('blog.urls', 'blog'), namespace='blog')),
     path('contact/', include(('contact.urls', 'contact'), namespace='contact')),
     path('admin/', admin.site.urls),

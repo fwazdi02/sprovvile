@@ -2,9 +2,9 @@ from django.db import models
 
 # Create your models here.
 
-# class EmailTemplate(models.Model):
-#     template
-#     title
+class EmailTemplate(models.Model):
+    title = models.CharField(max_length=255)
+    template = models.TextField()
 
 class History(models.Model):
     email = models.EmailField()

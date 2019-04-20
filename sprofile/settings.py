@@ -24,6 +24,7 @@ SECRET_KEY = 'pzdz*&z-ry_4muuf=jm-fit10v_*c+k$sa61@k9mzw(w83(1lo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['sprovvile.herokuapp.com']
 
 

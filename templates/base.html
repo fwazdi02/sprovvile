@@ -60,10 +60,16 @@
 
         @media screen and (max-width:764px){
         #portfolio figure{
-            width: 100%;
+            width: 98%;
             display: inline-block;
             margin: 0;
             margin-bottom: 1rem;
+        }
+
+        main.main-wrapper{
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
         }
 
         }
@@ -76,7 +82,7 @@
         {# <li><strong><em>{-{{ request.site.site}}-}</em></strong></li> #}
         <li><a href="{% url 'index' %}">Home</a></li>
         <li><a href="{% url 'blog:list' %}">Blog</a></li>
-        <li><a href="{% url 'blog:list' %}">My CV</a></li>
+        <li><a href="{% url 'send-cv' %}">My CV</a></li>
         <li><a href="{% url 'about' %}">About</a></li>
     </ul>
 </nav>

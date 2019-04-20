@@ -6,7 +6,7 @@
     <h2 style="margin-bottom:2rem;">Blog</h2>
     <ul class="list">
     {% for post in object_list  %}
-        <li>
+        <li style="display:block">
             <h4>{{post.title}} - <a href="{{ post.get_absolute_url }}">link</a></h4>
             <small>{{post.created_date}} - {{post.category.name}}, by : {{post.user.username}} - comment : {{post.get_comment_count}}</small>
         </li>
